@@ -1,8 +1,4 @@
-{{ 'list-collections.scss.css' | asset_url | stylesheet_tag }}
-
-{% assign images_per_row = section.settings.images_per_row %}
-
-<div class="collections-container" data-section-type="list-collections-template">
+<div data-section-type="list-collections-template">
   {% capture header_content %}
     <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
       <a class="breadcrumbs__crumb" href="{{ routes.root_url }}">{{ 'general.breadcrumbs.home' | t }}</a>
@@ -35,7 +31,7 @@
         {% paginate collections by 12 %}
           <div class="grid grid--row-gutters product-list">
             {% for collection in collections %}
-              {% include 'collection-grid-item', num_per_row: images_per_row %}
+              {% include 'collection-grid-item', num_per_row: 4 %}
             {% endfor %}
           </div>
           {% include 'pagination' %}
@@ -86,16 +82,7 @@
         "label": "Show all collections",
         "info": "Instead of the custom list below",
         "default": true
-      },
-      {
-        "type":      "range",
-        "id":        "images_per_row",
-        "min":       2,
-        "max":        4,
-        "step":       1,
-        "label":     "Images Per Row",
-        "default":   3
-    }
+      }
     ],
     "blocks": [
       {
