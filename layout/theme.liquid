@@ -118,8 +118,10 @@
 
   {% section 'announcement' %}
 
-  <!-- {% section 'header-orig' %} -->
+  {%- comment -%}
   {% section 'header' %}
+  {%- endcomment -%}
+  {% section 'header-momo' %}
 
   {% assign templates_with_layout = 'index,collection,product,cart,search,blog,article,page,page.contact,list-collections,page.list-collections' | split: ',' %}
 

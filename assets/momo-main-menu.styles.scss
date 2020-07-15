@@ -1,15 +1,33 @@
+$main-menu-padding: 20px;
+
 .momo.main-menu {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
+    justify-content: center;
+    padding: $main-menu-padding;
     box-sizing: border-box;
     &.top {
         color: white;
     }
     transition: background-color 1s;
+
+    .float-area {
+        position: absolute;
+        top: $main-menu-padding;
+        right: $main-menu-padding;
+
+        display: flex;
+    }
+
+    .header-search-toggle > svg {
+        color: white;
+    }
 }
 
-#shopify-section-header {
+.momo.main-menu-item {
+    text-transform: uppercase;
+}
+
+#shopify-section-header-momo {
     position: fixed;
     width: 100%;
 }
@@ -17,15 +35,18 @@
 /* scrolled down */
 body.scrolled-down {
     
-    #shopify-section-header {
+    #shopify-section-header-momo {
         position: fixed;
     }
     
     .momo.main-menu {
         color: black;
         background-color: #ffffff82;
+        
+        .header-search-toggle > svg {
+            color: black;
+        }
     }
-
 }
 
 .pageheader__contents {

@@ -1,7 +1,7 @@
 <div class="momo main-menu top">
     {%- for link in linklists[section.settings.menu_linklist].links -%}
 
-        <div class="momo main-menu-item">
+        <div class="momo main-menu-item header-items__item">
             {{- link.title -}}
         </div>
 
@@ -18,5 +18,10 @@
         {%- endif -%}
         </li> -->
     {%- endfor -%}
-    <div>CART</div>
+    <div class="float-area">
+        <div class="header-items__item">CART</div>
+        <span class="header-items__item header-items__search-link">
+            <a href="{{ routes.search_url }}" class="header-search-toggle" aria-label="{{ 'layout.header.search' | t | json }}">{% include 'svg-search' %}</a>
+          </span>
+    </div>
 </div>

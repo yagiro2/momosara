@@ -1,0 +1,196 @@
+{%- capture logo_size -%}{{ section.settings.logo_width | default: 250 | times: 2 }}x{%- endcapture -%}
+
+{% style %}
+{%- if section.settings.logo != blank -%}
+  {%- assign logo_height = section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio -%}
+  {%- assign logo_width = section.settings.logo_width | plus: 0 -%}
+  .pageheader .logo { max-width: {{ section.settings.logo_width }}px }
+
+  {%- if section.settings.enable_sticky -%}
+    {%- if section.settings.enable_logo_shrink -%}
+      {%- assign smaller_logo_width = section.settings.logo_width | times: 0.75 | round -%}
+      .scrolled-down .pageheader .logo { max-width: {{ smaller_logo_width }}px }
+    {%- endif -%}
+    {%- if logo_height > 40 -%}
+      @media (max-width: 767px) {
+        .scrolled-down .pageheader .logo { max-width: {{ section.settings.logo_width | times: 0.65 | round }}px }
+      }
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if section.settings.enabled_header_overlap -%}
+    .has-banner .banner-image-container .feature-page-title { margin-top: {{ logo_height | round }}px }
+    .banner-under-header .banner-image.flexible-height .overlay .innest { padding-top: {{ logo_height | round }}px }
+    @media (min-width: 768px) {
+      .banner-under-header .banner-image.fixed-height .overlay .innest { padding-top: {{ logo_height | round }}px }
+    }
+  {%- endif -%}
+{%- endif -%}
+{%- if section.settings.enable_sticky -%}
+  .shopify-section--header {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+{%- endif -%}
+{%- unless section.settings.enabled_header_overlap -%}
+  .banner-image-container .feature-page-title .breadcrumbs {
+    top: 0;
+  }
+  .has-banner .banner-image-container .feature-page-title {
+    margin-top: 0!important;
+    padding-top: 80px;
+  }
+  @media (max-width: 767px) {
+    .has-banner .banner-image-container .feature-page-title {
+      padding-top: 40px;
+    }
+  }
+{%- endunless -%}
+
+  .custom-header-logo {
+    display: none !important;
+  }
+  .scrolled-down .custom-header-logo {
+    display: block !important;
+  }
+
+{% endstyle %}
+
+{%- if template == 'password' or template == 'gift_card' -%}
+
+{% comment %} Password/gift card template logo {% endcomment %}
+<div id="pageheader" class="pageheader">
+  <header class="pageheader__contents">
+    <div class="custom-header-logo logo logo--{% if section.settings.logo == blank %}text{% else %}image{% endif %}{% if logo_height > 60 %} logo--shrinks-on-scroll{% endif %}">
+      {% if section.settings.logo != blank %}
+      <span class="image">
+        <img src="{{ section.settings.logo | img_url: logo_size }}" alt="{{ section.settings.logo.alt | escape }}" />
+      </span>
+      {% else %}
+      <h1 class="text">{{ shop.name }}</h1>
+      {% endif %}
+    </div>
+  </header>
+</div>
+
+{%- else -%}
+
+<div data-section-type="header">
+  {% include 'momo-main-menu-top' %}
+  {% include 'momo-header-search' %}
+  <header class="pageheader__contents{% if section.settings.enable_sticky %} pageheader__contents--sticky{% endif %}{% if section.settings.enabled_header_overlap %} pageheader__contents--overlap{% endif %}{{ header_alignment_class }}"></header>
+</div>
+
+
+
+<!-- <a href="#" class="focus-tint" aria-hidden="true" aria-label="{{ 'general.accessibility_labels.close' | t | json }}"></a> -->
+
+{%- endif -%}
+
+
+{% schema %}
+  {
+    "name": "Header",
+    "class": "shopify-section--header",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_sticky",
+        "label": "Enable sticky header",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enabled_header_overlap",
+        "label": "Show header on top of banner images",
+        "default": true
+      },
+			{
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Image",
+        "info": "300 x 100px recommended"
+      },
+      {
+        "type": "text",
+        "id": "logo_width",
+        "label": "Logo width (px)",
+        "default": "100"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_logo_shrink",
+        "label": "Shrink logo on scroll down",
+        "default": true
+      },
+			{
+        "type": "header",
+        "content": "Contrast logo"
+      },
+			{
+        "type": "paragraph",
+        "content": "Optional logo used when over the header slideshow and images"
+      },
+			{
+        "type": "image_picker",
+        "id": "alt_logo",
+        "label": "Image"
+      },
+      {
+        "type": "header",
+        "content": "Navigation"
+      },
+      {
+				"type": "link_list",
+				"id": "menu_linklist",
+				"label": "Menu",
+				"default": "main-menu"
+      },
+      {
+				"type": "richtext",
+				"id": "menu_under_text",
+				"label": "Menu footer text"
+      },
+      {
+        "type": "header",
+        "content": "Search"
+      },
+      {
+				"type": "text",
+				"id": "search_menu_title",
+				"label": "Quick links heading"
+      },
+      {
+				"type": "link_list",
+				"id": "search_menu_linklist",
+				"label": "Quick links menu"
+      },
+      {
+        "type": "header",
+        "content": "Language Selector",
+        "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_locale_selector",
+        "label": "Show language selector",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Currency Selector",
+        "info": "To add a currency, go to your [payment settings.](/admin/settings/payments)"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_currency_selector",
+        "label": "Show currency selector",
+        "default": true
+      }
+		]
+  }
+{% endschema %}

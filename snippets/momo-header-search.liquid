@@ -1,0 +1,51 @@
+<div class="header-search">
+    <a href="#" class="header-search-toggle" aria-label="{{ 'general.accessibility_labels.close' | t | json }}">{% include 'svg-arrow-left' %}</a>
+
+    <div class="header-search__content">
+      <h2 class="">{{ 'layout.search.title' | t }}</h2>
+      <form method="get" action="{{ routes.search_url }}" autocomplete="off">
+        <input type="hidden" name="type" value="{{ settings.search_type }}" />
+        <input type="hidden" name="options[prefix]" value="last" />
+        <div class="input-and-button-row">
+          <div class="input-and-button-row__input-wrapper input-with-clear">
+            <input class="input-and-button-row__input" type="text" name="q" placeholder="{{ 'layout.search.placeholder' | t | escape }}" aria-label="{{ 'layout.search.placeholder' | t | escape }}"  autocomplete="off" data-previous-value="">
+            <a class="input-with-clear__clear" href="#">{% include 'svg-close' %}</a>
+          </div>
+          <button class="button input-and-button-row__button" type="submit">{{ 'layout.search.submit' | t }}</button>
+        </div>
+      </form>
+      <div class="header-search__results-wrapper" data-live-search-vendor="{{ settings.live_search_show_vendor }}">
+        <div class="header-search__placeholder">
+          {%- for i in (1..5) -%}
+            <div class="search-result search-result--placeholder">
+              <div class="search-result__link">
+                <div class="search-result__image"></div>
+                <div class="search-result__detail">
+                  {%- if settings.live_search_show_vendor -%}
+                    <div class="search-result__vendor"></div>
+                  {%- endif -%}
+                  <div class="search-result__title"></div>
+                  <div class="search-result__price"></div>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+        <div class="header-search__results"></div>
+      </div>
+
+      {% if section.settings.search_menu_linklist != blank and linklists[section.settings.search_menu_linklist].links.size > 0 %}
+        <div class="nav header-search__nav">
+          {%- if section.settings.search_menu_title != blank -%}
+            <h6 class="header-search__small-heading meta">{{ section.settings.search_menu_title }}</h6>
+          {%- endif -%}
+
+          <ul class="header-search__links">
+            {% for link in linklists[section.settings.search_menu_linklist].links %}
+            <li class="header-search__links__item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+  </div>
