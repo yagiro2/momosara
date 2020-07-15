@@ -1,0 +1,33 @@
+.momo.main-menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    &.top {
+        color: white;
+    }
+    transition: background-color 1s;
+}
+
+#shopify-section-header {
+    position: fixed;
+    width: 100%;
+}
+
+/* scrolled down */
+body.scrolled-down {
+    
+    #shopify-section-header {
+        position: fixed;
+    }
+    
+    .momo.main-menu {
+        color: black;
+        background-color: #ffffff82;
+    }
+
+}
+
+.pageheader__contents {
+    visibility: hidden;
+}

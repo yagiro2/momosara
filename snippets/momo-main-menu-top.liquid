@@ -1,0 +1,22 @@
+<div class="momo main-menu top">
+    {%- for link in linklists[section.settings.menu_linklist].links -%}
+
+        <div class="momo main-menu-item">
+            {{- link.title -}}
+        </div>
+
+        <!-- <li class="main-menu-list-item{% if link.links != blank %} has-children{% endif %}{% if link.active %} active{% endif %}">
+        <a class="main-menu-link" href="{{ link.url }}" {% if link.links != blank %}aria-haspopup="true" aria-controls="main-menu-panel-{{ forloop.index }}"{% endif %}>
+            {{- link.title -}}
+        </a>
+
+        {%- if link.links != blank -%}
+            <div class="child-indicator">
+            <div class="child-indicator__primary">{% include 'svg-menu-children' %}</div>
+            <div class="child-indicator__secondary">{% include 'svg-arrow-right' %}</div>
+            </div>
+        {%- endif -%}
+        </li> -->
+    {%- endfor -%}
+    <div>CART</div>
+</div>
