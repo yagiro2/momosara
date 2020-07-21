@@ -1,0 +1,9 @@
+{%- if link.links != blank -%}
+
+    <div class="momo submenu">
+        {% for childlink in link.links %}
+            <a class="submenu-item" href="{{ childlink.url }}">{{ childlink.title }}</a>
+        {% endfor %}
+    </div>
+
+{%- endif -%}

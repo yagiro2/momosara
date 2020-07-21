@@ -1,0 +1,25 @@
+.momo.submenu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    
+    visibility: hidden;
+    
+    background-color: #ffffff82;
+    color: black;
+    
+    .submenu-item {
+        display: flex;
+        justify-content: center;
+
+        cursor: pointer;
+        padding: 0.5rem 2.5rem;
+
+        transition: background-color .5s;
+    }
+}

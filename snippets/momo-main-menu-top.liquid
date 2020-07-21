@@ -1,8 +1,11 @@
 <div class="momo main-menu top">
     {%- for link in linklists[section.settings.menu_linklist].links -%}
 
-        <div class="momo main-menu-item header-items__item">
-            {{- link.title -}}
+        <div class="menu-wrapper">
+            <div class="momo main-menu-item header-items__item">
+                {{- link.title -}}
+            </div>
+            {% include 'momo-main-menu-submenu' %}
         </div>
 
         <!-- <li class="main-menu-list-item{% if link.links != blank %} has-children{% endif %}{% if link.active %} active{% endif %}">
@@ -22,6 +25,6 @@
         <div class="header-items__item">CART</div>
         <span class="header-items__item header-items__search-link">
             <a href="{{ routes.search_url }}" class="header-search-toggle" aria-label="{{ 'layout.header.search' | t | json }}">{% include 'svg-search' %}</a>
-          </span>
+        </span>
     </div>
 </div>

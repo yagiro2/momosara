@@ -3,7 +3,7 @@ $main-menu-padding: 20px;
 .momo.main-menu {
     display: flex;
     justify-content: center;
-    padding: $main-menu-padding;
+    padding: 0 $main-menu-padding;
     box-sizing: border-box;
     &.top {
         color: white;
@@ -21,9 +21,30 @@ $main-menu-padding: 20px;
     .header-search-toggle > svg {
         color: white;
     }
+
+    .menu-wrapper {
+        position: relative;
+        padding: $main-menu-padding 0;
+
+        .submenu {
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        &:hover {
+            .submenu {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+        &:not(:first-child) {
+            margin-left: 2rem;
+        }
+    }
 }
 
 .momo.main-menu-item {
+    cursor: pointer;
     text-transform: uppercase;
 }
 
