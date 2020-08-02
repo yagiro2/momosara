@@ -1,10 +1,18 @@
 <div class="momo main-menu top">
+    <div class="header-items__item" style="display:flex; align-items: center;">
+        <a href="{{ routes.root_url }}">
+            HOME
+            <!-- <img style="cursor:pointer;" src="{{ section.settings.small_logo | img_url: '30x' }}"/> -->
+        </a>
+    </div>
     {%- for link in linklists[section.settings.menu_linklist].links -%}
 
         <div class="menu-wrapper">
-            <div class="momo main-menu-item header-items__item">
+            <a 
+                href="{{ link.url }}"
+                class="momo main-menu-item header-items__item">
                 {{- link.title -}}
-            </div>
+            </a>
             {% include 'momo-main-menu-submenu' %}
         </div>
 
@@ -22,7 +30,7 @@
         </li> -->
     {%- endfor -%}
     <div class="float-area">
-        <div class="header-items__item">CART</div>
+        <a href="{{ routes.cart_url }}" class="header-items__item">CART</a>
         <span class="header-items__item header-items__search-link">
             <a href="{{ routes.search_url }}" class="header-search-toggle" aria-label="{{ 'layout.header.search' | t | json }}">{% include 'svg-search' %}</a>
         </span>
