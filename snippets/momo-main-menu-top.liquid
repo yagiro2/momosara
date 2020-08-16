@@ -30,6 +30,10 @@
         </li> -->
     {%- endfor -%}
     <div class="float-area">
+        {%- comment -%}
+            todo: add cart items count.
+            to see example search for: "header-items__item header-items__cart-link"
+        {%- endcomment -%}
         <a href="{{ routes.cart_url }}" class="header-items__item">CART</a>
         <span class="header-items__item header-items__search-link">
             <a href="{{ routes.search_url }}" class="header-search-toggle" aria-label="{{ 'layout.header.search' | t | json }}">{% include 'svg-search' %}</a>

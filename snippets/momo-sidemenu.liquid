@@ -1,0 +1,116 @@
+<div id="main-menu" class="momo sidemenu">
+  <div class="main-menu-inner">
+    <div class="main-menu-upper">
+      <a class="main-menu-toggle" href="#" aria-controls="main-menu">{% include "svg-close" %}</a>
+    </div>
+    <div class="main-menu-panel-wrapper">
+      <div class="main-menu-panel" id="main-menu-panel">
+        <ul class="main-menu-links" role="navigation" aria-label="{{ 'layout.header.menu_aria_label' | t | escape }}">
+          {%- for link in linklists[section.settings.menu_linklist].links -%}
+            <li class="main-menu-list-item{% if link.links != blank %} has-children{% endif %}{% if link.active %} active{% endif %}">
+              <a class="main-menu-link" href="{{ link.url }}" {% if link.links != blank %}aria-haspopup="true" aria-controls="main-menu-panel-{{ forloop.index }}"{% endif %}>
+                {{- link.title -}}
+              </a>
+
+              {%- if link.links != blank -%}
+                <div class="child-indicator">
+                  <div class="child-indicator__primary">{% include 'svg-menu-children' %}</div>
+                  <div class="child-indicator__secondary">{% include 'svg-arrow-right' %}</div>
+                </div>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+
+          {% if shop.customer_accounts_enabled %}
+            {% if customer %}
+              <li class="main-menu-account-link main-menu-list-item"><a class="main-menu-link" href="{{ routes.account_url }}">{{ 'layout.customer.account' | t }}</a></li>
+              <li class="main-menu-account-link main-menu-list-item"><a class="main-menu-link" href="{{ routes.account_logout_url }}">{{ 'layout.customer.log_out' | t }}</a></li>
+            {% else %}
+              <li class="main-menu-account-link main-menu-list-item"><a class="main-menu-link" href="{{ routes.account_login_url }}">{{ 'layout.customer.log_in' | t }}</a></li>
+            {% endif %}
+          {% endif %}
+        </ul>
+
+        {% if section.settings.show_locale_selector or section.settings.show_currency_selector %}
+          <div class="main-menu-section store-localization">
+            {% include 'localization', input_prefix: 'header' %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.menu_under_text != blank %}
+          <div class="main-menu-section main-menu-section--footer">
+            <div class="rte">{{ section.settings.menu_under_text }}</div>
+          </div>
+        {% endif %}
+
+        <div class="main-menu-section main-menu-section--socials">
+          {% include 'social-icons', use_alt_custom_icon: true %}
+        </div>
+      </div>
+
+      {%- for link in linklists[section.settings.menu_linklist].links -%}
+        {%- if link.links != blank -%}
+          <div class="main-menu-panel main-menu-panel--child main-menu-panel--inactive-right" id="main-menu-panel-{{ forloop.index }}">
+            <div class="main-menu-breadcrumbs">
+              <span class="main-menu-breadcrumbs__item"><a class="main-menu-breadcrumbs__link" href="#main-menu-panel">{{ 'layout.header.menu_breadcrumb_home' | t }}</a></span>
+              <span class="main-menu-breadcrumbs__divider">{% include 'svg-arrow-right' %}</span>
+              <span class="main-menu-breadcrumbs__item">{{ link.title }}</span>
+            </div>
+            <ul class="main-menu-links">
+              {%- assign outer_forloop_index = forloop.index -%}
+              {%- for child_link in link.links -%}
+                <li class="main-menu-list-item{% if child_link.links != blank %} has-children{% endif %}{% if child_link.active %} active{% endif %}">
+                  <a class="main-menu-link" href="{{ child_link.url }}" {% if child_link.links != blank %}aria-haspopup="true" aria-controls="main-menu-panel-{{ outer_forloop_index }}-{{ forloop.index }}"{% endif %}>
+                    {{- child_link.title -}}
+                  </a>
+
+                  {%- if child_link.links != blank -%}
+                    <div class="child-indicator">
+                      <div class="child-indicator__primary">{% include 'svg-menu-children' %}</div>
+                      <div class="child-indicator__secondary">{% include 'svg-arrow-right' %}</div>
+                    </div>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+
+          {%- assign outer_forloop_index = forloop.index -%}
+          {%- for child_link in link.links -%}
+            {%- if child_link.links != blank -%}
+              <div class="main-menu-panel main-menu-panel--child main-menu-panel--inactive-right" id="main-menu-panel-{{ outer_forloop_index }}-{{ forloop.index }}">
+                <div class="main-menu-breadcrumbs">
+                  <span class="main-menu-breadcrumbs__item"><a class="main-menu-breadcrumbs__link" href="#main-menu-panel">{{ 'layout.header.menu_breadcrumb_home' | t }}</a></span>
+                  <span class="main-menu-breadcrumbs__divider">{% include 'svg-arrow-right' %}</span>
+                  <span class="main-menu-breadcrumbs__item"><a class="main-menu-breadcrumbs__link" href="#main-menu-panel-{{ outer_forloop_index }}">{{ link.title }}</a></span>
+                  <span class="main-menu-breadcrumbs__divider">{% include 'svg-arrow-right' %}</span>
+                  <span class="main-menu-breadcrumbs__item">{{ child_link.title }}</span>
+                </div>
+                <ul class="main-menu-links">
+                  {%- for grandchild_link in child_link.links -%}
+                    <li {% if grandchild_link.active %}class="active"{% endif %}>
+                      <a class="main-menu-link" href="{{ grandchild_link.url }}">
+                        {{- grandchild_link.title -}}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<div id="pageheader" class="pageheader momo">
+  <header class="pageheader__contents{% if section.settings.enable_sticky %} pageheader__contents--sticky{% endif %}{% if section.settings.enabled_header_overlap %} pageheader__contents--overlap{% endif %}">
+    <div class="header-left">
+      <a href="#" class="main-menu-toggle" aria-controls="main-menu">
+        <span class="main-menu-icon"><span></span></span>
+        <span class="main-menu-toggle__text">{{ 'layout.header.menu' | t }}</span>
+      </a>
+    </div>
+  </header>
+</div>

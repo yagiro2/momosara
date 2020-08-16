@@ -56,37 +56,11 @@
 
 {% endstyle %}
 
-{%- if template == 'password' or template == 'gift_card' -%}
-
-{% comment %} Password/gift card template logo {% endcomment %}
-<div id="pageheader" class="pageheader">
-  <header class="pageheader__contents">
-    <div class="custom-header-logo logo logo--{% if section.settings.logo == blank %}text{% else %}image{% endif %}{% if logo_height > 60 %} logo--shrinks-on-scroll{% endif %}">
-      {% if section.settings.logo != blank %}
-      <span class="image">
-        <img src="{{ section.settings.logo | img_url: logo_size }}" alt="{{ section.settings.logo.alt | escape }}" />
-      </span>
-      {% else %}
-      <h1 class="text">{{ shop.name }}</h1>
-      {% endif %}
-    </div>
-  </header>
-</div>
-
-{%- else -%}
-
 <div data-section-type="header">
   {% include 'momo-main-menu-top' %}
   {% include 'momo-header-search' %}
-  <header class="pageheader__contents{% if section.settings.enable_sticky %} pageheader__contents--sticky{% endif %}{% if section.settings.enabled_header_overlap %} pageheader__contents--overlap{% endif %}{{ header_alignment_class }}"></header>
+  {% include 'momo-sidemenu' %}
 </div>
-
-
-
-<!-- <a href="#" class="focus-tint" aria-hidden="true" aria-label="{{ 'general.accessibility_labels.close' | t | json }}"></a> -->
-
-{%- endif -%}
-
 
 {% schema %}
   {

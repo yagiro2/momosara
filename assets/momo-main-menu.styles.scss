@@ -1,6 +1,13 @@
 $main-menu-padding: 20px;
+$menu-breakpoint: 620px; // duplicated in momo-sidemenu.styles.scss. needs to be changed in both.
 
-.momo.main-menu {
+.momo.main-menu.top {
+
+    visibility: hidden;
+    @media (min-width: $menu-breakpoint) {
+        visibility: initial;
+    }
+
     display: flex;
     justify-content: center;
     padding: 0 $main-menu-padding;
@@ -41,11 +48,11 @@ $main-menu-padding: 20px;
             margin-left: 2rem;
         }
     }
-}
 
-.momo.main-menu-item {
-    cursor: pointer;
-    text-transform: uppercase;
+    .momo.main-menu-item {
+        cursor: pointer;
+        text-transform: uppercase;
+    }
 }
 
 #shopify-section-header-momo {
@@ -60,7 +67,7 @@ body.scrolled-down {
         position: fixed;
     }
     
-    .momo.main-menu {
+    .momo.main-menu.top {
         color: black;
         background-color: #ffffff82;
         
@@ -68,8 +75,4 @@ body.scrolled-down {
             color: black;
         }
     }
-}
-
-.pageheader__contents {
-    visibility: hidden;
 }

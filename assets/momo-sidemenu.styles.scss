@@ -1,0 +1,17 @@
+$menu-breakpoint: 620px; // duplicated in momo-main-menu.styles.scss. needs to be changed in both.
+
+#shopify-section-header-momo {
+    .pageheader {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        > .pageheader__contents {
+            background-color: initial;
+
+            @media (min-width: $menu-breakpoint) {
+                visibility: hidden;
+            }
+        }
+    }    
+}
