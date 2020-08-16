@@ -1,11 +1,11 @@
-<footer id="pagefooter" class="pagefooter" data-section-type="footer">
+<footer id="pagefooter" class="pagefooter momo" data-section-type="footer">
   {% if section.settings.show_newsletter %}
-    <div class="signup-section">
+    <div class="signup-section momo">
       <div class="container">
         {% form 'customer' %}
           <input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter"/>
 
-          <div class="signup-icon">{% include 'svg-email' %}</div>
+          <div class="signup-icon momo">{% include 'svg-email' %}</div>
 
           <h3>{{ section.settings.newsletter_heading }}</h3>
 
@@ -17,14 +17,14 @@
           </div>
 
           {% if section.settings.newsletter_text != blank %}
-            <div class="rte">{{ section.settings.newsletter_text }}</div>
+            <div class="rte momo newsletter_text">{{ section.settings.newsletter_text }}</div>
           {% endif %}
         {% endform %}
       </div>
     </div>
   {% endif %}
 
-  <div class="container">
+  <div class="container momo-hidden">
     {%- assign footer_column_count = 0 -%}
     {%- if linklists[section.settings.menu_linklist].links.size > 0 -%}{%- assign footer_column_count = footer_column_count | plus: 1 -%}{%- endif -%}
     {%- if section.settings.menu_linklist_2 != blank and linklists[section.settings.menu_linklist_2].links.size > 0 -%}{%- assign footer_column_count = footer_column_count | plus: 1 -%}{%- endif -%}
@@ -82,7 +82,7 @@
       {% endif %}
     </div>
   </div>
-  <div class="lower-footer">
+  <div class="lower-footer momo-hidden">
     <div class="container">
       {% if section.settings.show_locale_selector or section.settings.show_currency_selector %}
         <div class="lower-footer__left">
@@ -100,7 +100,7 @@
   </div>
 
 
-  <div class="lower-footer">
+  <div class="lower-footer momo-hidden">
     <div class="container">
       <div class="lower-footer__left">
         <div class="copyright" role="contentinfo">
