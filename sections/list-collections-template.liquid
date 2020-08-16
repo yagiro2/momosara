@@ -17,12 +17,12 @@
     <div class="banner-image-container banner-under-header">
       {% include 'responsive-background', image: section.settings.header_image, class: 'banner-image fixed-height' %}
 
-      <div class="banner-image-text feature-page-title">
+      <div class="banner-image-text feature-page-title momo-hidden">
         {{ header_content }}
       </div>
     </div>
   {% else %}
-    <div class="feature-page-title">
+    <div class="feature-page-title momo-hidden">
       {{ header_content }}
     </div>
   {% endif %}
