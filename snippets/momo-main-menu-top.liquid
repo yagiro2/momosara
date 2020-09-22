@@ -1,10 +1,5 @@
 <div class="momo main-menu top">
-    <div class="header-items__item" style="display:flex; align-items: center;">
-        <a href="{{ routes.root_url }}">
-            HOME
-            <!-- <img style="cursor:pointer;" src="{{ section.settings.small_logo | img_url: '30x' }}"/> -->
-        </a>
-    </div>
+
     {%- for link in linklists[section.settings.menu_linklist].links -%}
 
         <div class="menu-wrapper">
