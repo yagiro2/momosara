@@ -1,0 +1,63 @@
+/** allow the collections container to spread to full width of the screen */
+#shopify-section-momo-list-collections-template {
+    .container {
+        max-width: 100vw;
+        width: 100vw;
+        margin: 0;
+    }
+}
+
+.momo-collections-list {
+    display: grid;
+
+    /** define numer of cols (1/2/4) according to screen width */
+    @media (max-width: 400px) {
+        grid-template-columns: 1fr;
+    }
+    @media (min-width: 401px) and (max-width: 800px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 801px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /** place collection name (caption) on top of the image */
+    .momo-collection-grid-item {
+        position: relative;
+
+        .prod-caption {
+            padding: 0;
+
+            position: absolute;
+            text-align: center;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            > a {
+                color: white;
+            }
+        }
+    }
+}
+
+/** cool style for a collection image */
+.collections-container .rimage__image {
+    
+    /** only for devices with a mouse,
+        show as black & white, and reveal color on hover */
+    transition: filter 150ms ease-in;
+    @media screen and (pointer: fine) {
+      filter: grayscale(100%);
+      &:hover {
+        filter: grayscale(0);
+      }
+    }
+  
+  }
+  
+  /** keep a 1:1 aspect ratio (square) for collection images */
+  .collections-container .rimage-wrapper {
+    height: 0;
+    padding-top: 100% !important;
+  }
