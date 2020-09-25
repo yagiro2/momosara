@@ -1,0 +1,104 @@
+<div data-section-type="page-info-momo-template">
+  <div class="container">
+    <div id="main" class="content-main" role="main">
+      <div class="rte reading-width">
+        <div id="toc">
+          <h2>Table of Contents</h2>
+          <div id="toc-list"></div>
+        </div>
+        {{ page.content }}
+      </div>
+      <script>
+
+        const tocListNode = document.querySelector('#toc-list');
+
+        function addTitleToTocList(sectionTitleNode) {
+          if (sectionTitleNode.id) {
+              const newItem = document.createElement('a');
+              newItem.innerText = sectionTitleNode.innerText;
+              newItem.classList.add('toc-list-item')
+              newItem.setAttribute('href', '#' + sectionTitleNode.id);
+              tocListNode.appendChild(newItem);
+            }
+        }
+        
+        function createTableOfContents() {
+          const sectionTitleNodes = document.querySelectorAll('h2[id]')
+          sectionTitleNodes.forEach(addTitleToTocList);
+        }
+
+        createTableOfContents();
+
+      </script>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Info Page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Header image"
+      },
+      {
+        "type": "paragraph",
+        "content": "Shown on all standard pages"
+      },
+      {
+        "type": "image_picker",
+        "id": "header_image",
+        "label": "Image"
+      }
+    ]
+  }
+{% endschema %}
+
+{%- comment -%}
+<div class="question">
+	<div class="title">
+		ENTER_QUESTION
+	</div>
+	<div class="answer">
+    ENTER_ANSWER
+  </div>
+</div>
+{%- endcomment -%}
+
+{% stylesheet 'scss' %}
+
+  h2[id] {
+    margin-top: 2rem;
+  }
+
+  #toc-list {
+    display: flex;
+    flex-direction: column;
+
+    .toc-list-item:not(:first-child) {
+      margin-top: 5px;
+    }
+  }
+
+  /** see question dom template above */
+  .question {
+    margin-bottom: 20px;
+    
+    -webkit-box-shadow: 10px 10px 33px -11px rgba(0,0,0,0.31);
+    -moz-box-shadow: 10px 10px 33px -11px rgba(0,0,0,0.31);
+    box-shadow: 10px 10px 33px -11px rgba(0,0,0,0.31);
+
+    .title {
+      padding: 10px 15px;
+      background-color: #ffd7d7;
+      text-transform: uppercase;
+    }
+
+    .answer {
+      padding: 10px 15px;
+    }
+
+  }
+{% endstylesheet %}
