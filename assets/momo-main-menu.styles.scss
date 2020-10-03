@@ -1,6 +1,54 @@
 $main-menu-padding: 20px;
 $menu-breakpoint: 620px; // duplicated in momo-sidemenu.styles.scss. needs to be changed in both.
+$menu-transition-time: .4s;
+$menu-box-shadow: 0 4px 10px 3px rgba(0,0,0,0.05);
 
+/** menu style only on homepage */
+body#momosara {   
+    #shopify-section-header-momo {
+        position: fixed;
+        width: 100%;
+    }
+    
+    /* when the body is scrolled down */
+    &.scrolled-down {
+        
+        #shopify-section-header-momo {
+            position: fixed;
+            box-shadow: $menu-box-shadow;
+        }
+        
+        .momo.main-menu.top {
+            color: black;
+            // background-color: #ffffff82;
+            background-color: white;
+            
+            .header-search-toggle > svg {
+                color: black;
+            }
+        }
+    }
+}
+
+/** menu style on all other pages (not the homepage) */
+body:not(#momosara) {
+    #shopify-section-header-momo {
+        position: sticky;
+        width: 100%;
+        box-shadow: $menu-box-shadow;
+    }
+
+    .momo.main-menu.top {
+        background-color: white;
+        color: black;
+
+        .header-search-toggle > svg {
+            color: black;
+        }
+    }
+}
+
+/** general style */
 .momo.main-menu.top {
 
     visibility: hidden;
@@ -12,10 +60,8 @@ $menu-breakpoint: 620px; // duplicated in momo-sidemenu.styles.scss. needs to be
     justify-content: center;
     padding: 0 $main-menu-padding;
     box-sizing: border-box;
-    &.top {
-        color: white;
-    }
-    transition: background-color 1s;
+    color: white;
+    transition: background-color $menu-transition-time;
 
     .float-area {
         position: absolute;
@@ -35,7 +81,7 @@ $menu-breakpoint: 620px; // duplicated in momo-sidemenu.styles.scss. needs to be
 
         .submenu {
             opacity: 0;
-            transition: opacity 1s;
+            transition: opacity $menu-transition-time;
         }
 
         &:hover {
@@ -52,27 +98,5 @@ $menu-breakpoint: 620px; // duplicated in momo-sidemenu.styles.scss. needs to be
     .momo.main-menu-item {
         cursor: pointer;
         text-transform: uppercase;
-    }
-}
-
-#shopify-section-header-momo {
-    position: fixed;
-    width: 100%;
-}
-
-/* scrolled down */
-body.scrolled-down {
-    
-    #shopify-section-header-momo {
-        position: fixed;
-    }
-    
-    .momo.main-menu.top {
-        color: black;
-        background-color: #ffffff82;
-        
-        .header-search-toggle > svg {
-            color: black;
-        }
     }
 }
