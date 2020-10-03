@@ -1,6 +1,6 @@
 $main-menu-padding: 20px;
 $menu-breakpoint: 620px; // duplicated in momo-sidemenu.styles.scss. needs to be changed in both.
-$menu-transition-time: .4s;
+$menu-transition-time: .2s;
 $menu-box-shadow: 0 4px 10px 3px rgba(0,0,0,0.05);
 
 /** menu style only on homepage */
@@ -63,6 +63,11 @@ body:not(#momosara) {
     color: white;
     transition: background-color $menu-transition-time;
 
+    /** prevent the bolder weight */
+    .header-items__item {
+        font-weight: initial;
+    }
+
     .float-area {
         position: absolute;
         top: $main-menu-padding;
@@ -81,6 +86,7 @@ body:not(#momosara) {
 
         .submenu {
             opacity: 0;
+            visibility: hidden;
             transition: opacity $menu-transition-time;
         }
 

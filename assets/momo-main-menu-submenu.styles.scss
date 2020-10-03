@@ -1,25 +1,30 @@
+$submenu-box-shadow: 0 10px 8px -5px rgba(0,0,0,0.02),
+                     7px 7px 10px -2px rgba(0,0,0,0.05),
+                     -7px 7px 10px -2px rgba(0,0,0,0.05);
+$submenu-padding: 4px;
+$submenu-item-side-padding: 1rem;
+
 .momo.submenu {
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-
+    padding: $submenu-padding;
+    left: calc(-#{$submenu-item-side-padding} - #{$submenu-padding});
+    
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    
-    visibility: hidden;
-    
-    background-color: #ffffff82;
+
+    background-color: white;
     color: black;
+    box-shadow: $submenu-box-shadow;
     
     .submenu-item {
         display: flex;
-        justify-content: center;
-
+        justify-content: flex-start;
         cursor: pointer;
-        padding: 0.5rem 2.5rem;
-
-        transition: background-color .5s;
+        padding: 0.3rem $submenu-item-side-padding;
+        margin: 0;
+        
+        /** prevent line-breaks */
+        white-space: nowrap;
     }
 }
