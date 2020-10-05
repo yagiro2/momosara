@@ -8,6 +8,16 @@ body#momosara {
     #shopify-section-header-momo {
         position: fixed;
         width: 100%;
+
+        .logo-wrapper {
+            /** hide logo when scrolled to top */
+            visibility: hidden;
+            
+            /** animate logo when it appears  */
+            transition: transform .3s;
+            transform: scale(0.9);
+        }
+
     }
     
     /* when the body is scrolled down */
@@ -15,6 +25,12 @@ body#momosara {
         
         #shopify-section-header-momo {
             position: fixed;
+
+            /** show logo when scrolled */
+            .logo-wrapper {
+                visibility: visible;
+                transform: none;
+            }
         }
         
         .momo.main-menu.top {
