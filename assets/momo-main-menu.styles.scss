@@ -15,13 +15,12 @@ body#momosara {
         
         #shopify-section-header-momo {
             position: fixed;
-            box-shadow: $menu-box-shadow;
         }
         
         .momo.main-menu.top {
             color: black;
-            // background-color: #ffffff82;
             background-color: white;
+            box-shadow: $menu-box-shadow;
             
             .header-search-toggle > svg {
                 color: black;
@@ -35,12 +34,12 @@ body:not(#momosara) {
     #shopify-section-header-momo {
         position: sticky;
         width: 100%;
-        box-shadow: $menu-box-shadow;
     }
 
     .momo.main-menu.top {
         background-color: white;
         color: black;
+        box-shadow: $menu-box-shadow;
 
         .header-search-toggle > svg {
             color: black;
@@ -57,23 +56,25 @@ body:not(#momosara) {
     }
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    > div {
+        display: flex;
+        align-items: center;
+    }
+
     padding: 0 $main-menu-padding;
     box-sizing: border-box;
     color: white;
     transition: background-color $menu-transition-time;
 
+    .logo-wrapper > a.logo-link {
+        line-height: initial;
+    }
+
     /** prevent the bolder weight */
     .header-items__item {
         font-weight: initial;
-    }
-
-    .float-area {
-        position: absolute;
-        top: $main-menu-padding;
-        right: $main-menu-padding;
-
-        display: flex;
     }
 
     .header-search-toggle > svg {
