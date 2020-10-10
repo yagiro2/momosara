@@ -6,8 +6,10 @@ $menu-breakpoint: 620px; // duplicated in momo-main-menu.styles.scss. needs to b
         top: 0;
         left: 0;
         
-        @media (min-width: $menu-breakpoint) {
-            visibility: hidden;
+        /** show sidemenu on narrow screen, or when there is no hover */
+        visibility: hidden;
+        @media (max-width: $menu-breakpoint), (hover: none) {
+            visibility: visible;
         }
         
         > .pageheader__contents {

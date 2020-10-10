@@ -1,5 +1,5 @@
 $main-menu-padding: 20px;
-$menu-breakpoint: 620px; // duplicated in momo-sidemenu.styles.scss. needs to be changed in both.
+$menu-breakpoint: 621px; // duplicated in momo-sidemenu.styles.scss. needs to be changed in both.
 $menu-transition-time: .2s;
 $menu-box-shadow: 0 4px 10px 3px rgba(0,0,0,0.05);
 
@@ -66,8 +66,9 @@ body:not(#momosara) {
 /** general style */
 .momo.main-menu.top {
 
+    /** show top-menu only on wide screens with hover */
     visibility: hidden;
-    @media (min-width: $menu-breakpoint) {
+    @media (min-width: $menu-breakpoint) and (hover: hover) {
         visibility: initial;
     }
 
