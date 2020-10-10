@@ -49,7 +49,7 @@
             show as black & white, and reveal color on hover */
         .rimage__image {
             transition: filter 150ms ease-in;
-            @media screen and (pointer: fine) {
+            @media screen and (hover: hover) {
                 filter: grayscale(100%);
             }
         }
