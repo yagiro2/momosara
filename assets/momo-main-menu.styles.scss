@@ -67,12 +67,11 @@ body:not(#momosara) {
 .momo.main-menu.top {
 
     /** show top-menu only on wide screens with hover */
-    visibility: hidden;
+    display: none;
     @media (min-width: $menu-breakpoint) and (hover: hover) {
-        visibility: initial;
+        display: flex;
     }
 
-    display: flex;
     justify-content: space-between;
     align-items: center;
     > div {
