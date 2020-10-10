@@ -5,6 +5,13 @@
     </div>
     <div class="main-menu-panel-wrapper">
       <div class="main-menu-panel" id="main-menu-panel">
+
+        <a href="{{ routes.root_url }}">
+          <div style="width: 50%;">
+            <img src="{{ section.settings.sidemenu_logo | img_url: 'master' }}"/>
+          </div>
+        </a>
+
         <ul class="main-menu-links" role="navigation" aria-label="{{ 'layout.header.menu_aria_label' | t | escape }}">
           {%- for link in linklists[section.settings.menu_linklist].links -%}
             <li class="main-menu-list-item{% if link.links != blank %} has-children{% endif %}{% if link.active %} active{% endif %}">
