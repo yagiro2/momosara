@@ -54,7 +54,7 @@
             <div class="main-menu-breadcrumbs">
               <span class="main-menu-breadcrumbs__item"><a class="main-menu-breadcrumbs__link" href="#main-menu-panel">{{ 'layout.header.menu_breadcrumb_home' | t }}</a></span>
               <span class="main-menu-breadcrumbs__divider">{% include 'svg-arrow-right' %}</span>
-              <span class="main-menu-breadcrumbs__item">{{ link.title }}</span>
+              <span class="main-menu-breadcrumbs__item"><a href="{{ link.url }}">{{ link.title }}</a></span>
             </div>
             <ul class="main-menu-links">
               {%- assign outer_forloop_index = forloop.index -%}
