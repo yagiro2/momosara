@@ -24,10 +24,10 @@
         grid-template-columns: repeat(4, 1fr);
     }
     
-    /** place collection name (caption) on top of the image */
     .momo-collection-grid-item {
         position: relative;
 
+        /** place collection name (caption) on top of the image */
         .prod-caption {
             padding: 0;
 
@@ -41,26 +41,25 @@
                 color: white;
             }
         }
-    }
-}
 
-/** cool style for a collection image */
-.collections-container .rimage__image {
-    
     /** only for devices with a mouse,
         show as black & white, and reveal color on hover */
+        .rimage__image {
     transition: filter 150ms ease-in;
     @media screen and (pointer: fine) {
       filter: grayscale(100%);
+            }
+        }
       &:hover {
+            .rimage__image {
         filter: grayscale(0);
       }
     }
   
-  }
-  
   /** keep a 1:1 aspect ratio (square) for collection images */
-  .collections-container .rimage-wrapper {
+        .rimage-wrapper {
     height: 0;
     padding-top: 100% !important;
   }
+    }
+}
