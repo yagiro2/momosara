@@ -23,9 +23,15 @@
         padding: 0 1vw;
     }
 
+    #main {
+        display: flex;
+        flex-direction: column;
+    }
+
     .product-list {
         display: grid;
         justify-items: center;
+        align-self: center;
 
         @include xs {
             grid-template-columns: 1fr;
@@ -37,10 +43,11 @@
             grid-template-columns: repeat(3, 1fr);
         }
         @include lg {
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
         }
         @include xl {
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+        }
         }
     }
 
@@ -61,7 +68,7 @@
             padding: 4%;
         }
         @include xl {
-            padding: 8%;
+            padding: 4%;
         }
 
         .product-image {
