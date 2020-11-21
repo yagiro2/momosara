@@ -3,68 +3,20 @@ $menu-breakpoint: 621px; // duplicated in momo-sidemenu.styles.scss. needs to be
 $menu-transition-time: .2s;
 $menu-box-shadow: 0 4px 10px 3px rgba(0,0,0,0.05);
 
-/** menu style only on homepage */
-body#momosara {   
-    #shopify-section-header-momo {
-        position: fixed;
-        width: 100%;
-
-        .logo-wrapper {
-            /** hide logo when scrolled to top */
-            visibility: hidden;
-            
-            /** animate logo when it appears  */
-            transition: transform .3s;
-            transform: scale(0.9);
-        }
-
-    }
-    
-    /* when the body is scrolled down */
-    &.scrolled-down {
-        
-        #shopify-section-header-momo {
-            position: fixed;
-
-            /** show logo when scrolled */
-            .logo-wrapper {
-                visibility: visible;
-                transform: none;
-            }
-        }
-        
-        .momo.main-menu.top {
-            color: black;
-            background-color: white;
-            box-shadow: $menu-box-shadow;
-            
-            .header-search-toggle > svg {
-                color: black;
-            }
-        }
-    }
+#shopify-section-header-momo {
+    position: sticky;
+    width: 100%;
 }
 
-/** menu style on all other pages (not the homepage) */
-body:not(#momosara) {
-    #shopify-section-header-momo {
-        position: sticky;
-        width: 100%;
-    }
-
-    .momo.main-menu.top {
-        background-color: white;
-        color: black;
-        box-shadow: $menu-box-shadow;
-
-        .header-search-toggle > svg {
-            color: black;
-        }
-    }
-}
-
-/** general style */
 .momo.main-menu.top {
+
+    background-color: white;
+    color: black;
+    box-shadow: $menu-box-shadow;
+
+    .header-search-toggle > svg {
+        color: black;
+    }
 
     /** show top-menu only on wide screens with hover */
     display: none;
@@ -81,7 +33,6 @@ body:not(#momosara) {
 
     padding: 0 $main-menu-padding;
     box-sizing: border-box;
-    color: white;
     transition: background-color $menu-transition-time;
 
     .logo-wrapper > a.logo-link {
@@ -91,10 +42,6 @@ body:not(#momosara) {
     /** prevent the bolder weight */
     .header-items__item {
         font-weight: initial;
-    }
-
-    .header-search-toggle > svg {
-        color: white;
     }
 
     .menu-wrapper {
