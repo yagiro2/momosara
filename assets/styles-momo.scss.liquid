@@ -28,9 +28,36 @@ body#about {
   }
 }
 
-/** adjust "shop" button position on homepage */
-.slide-buttons {
-  position: absolute;
-  left: 50%;
-  margin-top: 8.5em !important; // momo change - "shop button"
+/** homepage */
+body#momosara {
+  
+  /** adjust "shop" button position on homepage */
+  .slide-buttons {
+    position: absolute;
+    left: 50%;
+    margin-top: 8.5em !important; // momo change - "shop button"
+  }
+
+  /** 3rd slideshow adjustments */
+  .image-with-text-section {
+    margin-top: 0px;
+
+    /** make it strech to full width */
+    .container {
+      max-width: unset;
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+
+    /** text adjustments */
+    .content {
+      font-size: 17px;
+      
+      .h2-margin-top {
+        margin-top: 1em;
+      }
+    }
+
+  }
+
 }
