@@ -35,8 +35,12 @@ body#momosara {
   /** adjust "shop" button position on homepage */
   .slide-buttons {
     position: absolute;
-    left: 50%;
-    margin-top: 8.5em !important; // momo change - "shop button"
+    transform: translateX(-50%);
+    bottom: 10%;
+    @media screen and (min-width: 475px) {
+      white-space: nowrap;
+      bottom: 6%;
+    }
   }
 /**
     This block affects all "Image with text" sections.
