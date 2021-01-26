@@ -29,12 +29,7 @@
 
   <div class="prod-caption">
     <a href="{{ product.url | within: collection }}">
-      <div class="title">
-        {% if section.settings.grid_show_vendor %}
-        <div class="prod-caption__vendor">{{ product.vendor }}</div>
-        {% endif %}
-        {{ product.title }}
-      </div>
+      
       <div class="product-price">
         {% if product.price_varies %}<span class="product-price__from">{{ 'products.listing.from' | t }}</span>{% endif %}
         
@@ -43,6 +38,13 @@
         {% if on_sale %}
         <span class="product-price__compare theme-money">{{ product.compare_at_price | money }}</span>
         {% endif %}
+      </div>
+
+      <div class="title">
+        {% if section.settings.grid_show_vendor %}
+        <div class="prod-caption__vendor">{{ product.vendor }}</div>
+        {% endif %}
+        {{ product.title }}
       </div>
       
       <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
