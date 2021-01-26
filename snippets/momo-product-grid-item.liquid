@@ -13,6 +13,9 @@
 {% else %}{% capture col_class %}quarter{% endcapture %}{% endif %}
 
 {%- assign image = product.featured_media.preview_image -%}
+{%- comment -%}
+  here we can set the image size for a collection item (using the 'img_url' filter)
+{%- endcomment -%}
 {%- assign img_url = image | img_url: '650x650' -%}
 {%- comment -%}
 {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}

@@ -75,11 +75,13 @@
                 /** keep 1:1 ratio */
                 height: 0;
                 padding-top: 100% !important;
+                background-size: 100%;
             }
             @include sm {
                 /** keep 1:1 ratio */
                 height: 0;
                 padding-top: 100% !important;
+                background-size: 100%;
             }
             @include md { height: 530px; }
             @include lg { height: 530px; }
