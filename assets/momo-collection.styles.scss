@@ -35,10 +35,10 @@
             grid-template-columns: 1fr;
         }
         @include sm {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
         }
         @include md {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
         }
         @include lg {
             grid-template-columns: repeat(3, 1fr);
@@ -59,28 +59,32 @@
         flex-direction: column;
         width: 100%;
 
-        @include xs {
-            padding: 2%;
-        }
-        @include sm {
-            padding: 3%;
-        }
-        @include md {
-            padding: 3%;
-        }
-        @include lg {
-            padding: 4%;
-        }
-        @include xl {
-            padding: 4%;
-        }
+        @include xs { padding: 12px; }
+        @include sm { padding: 12px; }
+        @include md { padding: 15px; }
+        @include lg { padding: 15px; }
+        @include xl { padding: 15px; }
 
         .product-image {
             position: relative;
             background-position: center;
             background-size: contain;
-            height: 0;
-            padding-top: 100% !important;
+
+            @include xs {
+                /** keep 1:1 ratio */
+                height: 0;
+                padding-top: 100% !important;
+            }
+            @include sm {
+                /** keep 1:1 ratio */
+                height: 0;
+                padding-top: 100% !important;
+            }
+            @include md { height: 530px; }
+            @include lg { height: 530px; }
+            @include xl { height: 530px; }
+
+
         }
 
         .product-label {
