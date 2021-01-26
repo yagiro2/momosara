@@ -1,6 +1,6 @@
 <div class="momo main-menu top">
 
-    <div class="logo-wrapper">
+    <div class="logo-wrapper side">
         <a class="logo-link" href="{{ routes.root_url }}">
             <img src="{{ section.settings.logo | img_url: logo_size }}" />
         </a>
@@ -31,7 +31,7 @@
             </li> -->
         {%- endfor -%}
     </div>
-    <div>
+    <div class="side right">
         {%- comment -%}
             todo: add cart items count.
             to see example search for: "header-items__item header-items__cart-link"
