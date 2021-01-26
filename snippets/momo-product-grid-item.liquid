@@ -22,17 +22,19 @@
 {%- endcomment -%}
 
 <div class="momo-product-grid-item">
-  <div class="product-image" style="background-image: url('{{img_url}}');">
-    {% include 'product-label' %}
-  </div>
+  <a href="{{ product.url | within: collection }}">
+    
+    <div class="product-image" style="background-image: url('{{img_url}}');">
+      {% include 'product-label' %}
+    </div>
+  </a>
   <!-- <div class="product-image-container">
     <img class="product-image" src="{{img_url}}"/>
   </div> -->
   
 
   <div class="prod-caption">
-    <a href="{{ product.url | within: collection }}">
-      
+    <a>
       <div class="product-price">
         {% if product.price_varies %}<span class="product-price__from">{{ 'products.listing.from' | t }}</span>{% endif %}
         
