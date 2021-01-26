@@ -55,8 +55,10 @@
 
   <div class="container">
     <div id="main" class="content-main" role="main">
-      {% assign num_per_page = section.settings.products_per_row_int | times: 4 %}
-      {% paginate collection.products by num_per_page %}
+      {%- comment -%}
+      {MOMO.PAG% assign num_per_page = section.settings.products_per_row_int | times: 4 %}
+      {MOMO.PAG% paginate collection.products by num_per_page %}
+      {%- endcomment -%}
 
       {% if section.settings.show_tags or section.settings.coll_show_sort %}
         <div class="mobile-filter-reveal align-center">
@@ -122,9 +124,11 @@
         {% endfor %}
       </div>
 
-      {% include 'pagination' %}
-
-      {% endpaginate %}
+      {%- comment -%}
+      {MOMO.PAG% include 'pagination' %}
+      
+      {MOMO.PAG% endpaginate %}
+      {%- endcomment -%}
     </div>
   </div>
 </div>
