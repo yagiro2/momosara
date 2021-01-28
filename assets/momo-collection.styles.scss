@@ -1,8 +1,24 @@
-@mixin xs { @media screen and (max-width: 300px) { @content; } }
-@mixin sm { @media screen and (min-width: 301px) and (max-width: 650px) { @content; } }
-@mixin md { @media screen and (min-width: 651px) and (max-width: 950px) { @content; } }
-@mixin lg { @media screen and (min-width: 951px) and (max-width: 1400px) { @content; } }
-@mixin xl { @media screen and (min-width: 1401px) { @content; } }
+$xs_end: 480px; 
+$sm_end: 768px; 
+$md_end: 1024px; 
+$lg_end: 1200px;
+// xl
+
+@function add_1px($val) {
+    @return calc(#{$val} + 1px);
+}
+
+@mixin bp_range($min_width, $max_width) {
+    @media screen and ( min-width: add_1px($min_width) ) and (max-width: $max_width) {
+        @content;
+    }
+}
+
+@mixin xs { @media screen and (max-width: $xs_end) { @content; } }
+@mixin sm { @include bp_range($xs_end, $sm_end) { @content; } }
+@mixin md { @include bp_range($sm_end, $md_end) { @content; } }
+@mixin lg { @include bp_range($md_end, $lg_end) { @content; } }
+@mixin xl { @media screen and (min-width: add_1px($lg_end)) { @content; } }
 
 .momo-collection-page {
 
