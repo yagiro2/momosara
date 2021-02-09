@@ -49,22 +49,6 @@ body#momosara {
       - See momo studio moments
   */
   .image-with-text-section {
-    // margin-top: 0px;
-
-    /** make it strech to full width */
-    // .container {
-    //   width: 100%;
-    //   max-width: unset;
-    //   margin-left: 0px;
-    //   margin-right: 0px;
-
-    // to make centered (todo: handle mobile!)
-    //   .column.half {
-    //     width: 50%;
-    //     margin-left: 0;
-    //   }
-    // }
-
     /** text adjustments */
     .content {
       font-size: 17px;
@@ -74,6 +58,20 @@ body#momosara {
       }
     }
 
+  }
+
+  .momo-vetrina-carousel {
+    .grid {
+      margin-left: 0;
+      .column {
+        margin-left: 0;
+        @media screen and (max-width: 767px) {
+          width: 100%;
+        }
+        width: 50%;
+      }
+    }
+    color: white;
   }
 
 }
