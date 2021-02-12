@@ -101,6 +101,21 @@ $lg_end: 1200px;
             @include md { height: 530px; }
             @include lg { height: 530px; }
             @include xl { height: 530px; }
+
+            &.secondary {
+                position: absolute;
+                z-index: 10;
+                opacity: 0;
+                transition: opacity .3s;
+                &:hover {
+                    opacity: 1;
+                }
+                @include xs { width: calc(100% - 24px); }
+                @include sm { width: calc(100% - 24px); }
+                @include md { width: calc(100% - 30px); }
+                @include lg { width: calc(100% - 30px); }
+                @include xl { width: calc(100% - 30px); }
+            }
         }
 
         .product-label {
@@ -120,6 +135,7 @@ $lg_end: 1200px;
             justify-content: center;
             padding: 0;
             pointer-events: none;
+            z-index: 20;
             
             /** responsive properties */
             font-size: 30px;
