@@ -14,29 +14,25 @@
 
 {%- assign image = product.featured_media.preview_image -%}
 {%- assign secondary_image = product.images[1] -%}
-{%- comment -%}
-  here we can set the image size for a collection item (using the 'img_url' filter)
-{%- endcomment -%}
-{%- assign img_url = image | img_url: '650x650' -%}
-{%- assign secondary_img_url = secondary_image | img_url: '650x650' -%}
-{%- comment -%}
-{%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-{%- endcomment -%}
+
+{%- assign img_size = "650x650" -%}
+{%- assign img_url = image | img_url: img_size -%}
+{%- assign secondary_img_url = secondary_image | img_url: img_size -%}
 
 <div class="momo-product-grid-item">
   <a href="{{ product.url | within: collection }}">
 
-    <div class="product-image secondary" style="background-image: url('{{secondary_img_url}}');">
+    <div
+      class="product-image secondary"
+      style="background-image: url('{{secondary_img_url}}');">
     </div>
 
-    <div class="product-image" style="background-image: url('{{img_url}}');">
+    <div
+      class="product-image"
+      style="background-image: url('{{img_url}}');">
     </div>
 
   </a>
-  <!-- <div class="product-image-container">
-    <img class="product-image" src="{{img_url}}"/>
-  </div> -->
-  
 
   <div class="prod-caption">
     <a>

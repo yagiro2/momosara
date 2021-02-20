@@ -20,6 +20,13 @@ $lg_end: 1200px;
 @mixin lg { @include bp_range($md_end, $lg_end) { @content; } }
 @mixin xl { @media screen and (min-width: add_1px($lg_end)) { @content; } }
 
+@mixin square_ratio() {
+    /** keep 1:1 ratio */
+    height: 0;
+    padding-top: 100% !important;
+    background-size: 100%;
+}
+
 .momo-collection-page {
 
     .momo-collection-breadcrumbs {
@@ -75,11 +82,13 @@ $lg_end: 1200px;
         width: 100%;
         position: relative; /** for .prod-caption */
 
-        @include xs { padding: 12px; }
-        @include sm { padding: 12px; }
-        @include md { padding: 15px; }
-        @include lg { padding: 15px; }
-        @include xl { padding: 15px; }
+        $item-padding-sm: 12px;
+        $item-padding-lg: 15px;
+        @include xs { padding: $item-padding-sm; }
+        @include sm { padding: $item-padding-sm; }
+        @include md { padding: $item-padding-sm; }
+        @include lg { padding: $item-padding-lg; }
+        @include xl { padding: $item-padding-lg; }
 
         .product-image {
             position: relative;
@@ -87,16 +96,10 @@ $lg_end: 1200px;
             // background-size: contain;
 
             @include xs {
-                /** keep 1:1 ratio */
-                height: 0;
-                padding-top: 100% !important;
-                background-size: 100%;
+                @include square_ratio();
             }
             @include sm {
-                /** keep 1:1 ratio */
-                height: 0;
-                padding-top: 100% !important;
-                background-size: 100%;
+                @include square_ratio();
             }
             @include md { height: 530px; }
             @include lg { height: 530px; }
