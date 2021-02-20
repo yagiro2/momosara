@@ -2,7 +2,7 @@ $xs_end: 480px;
 $sm_end: 768px; 
 $md_end: 1024px; 
 $lg_end: 1200px;
-// xl
+// xl > 1200 px
 
 @function add_1px($val) {
     @return calc(#{$val} + 1px);
@@ -25,6 +25,10 @@ $lg_end: 1200px;
     height: 0;
     padding-top: 100% !important;
     background-size: 100%;
+}
+
+@mixin full_width_minus_padding($padding) {
+    width: calc(100% - (#{$padding} * 2));
 }
 
 .momo-collection-page {
@@ -84,6 +88,7 @@ $lg_end: 1200px;
 
         $item-padding-sm: 12px;
         $item-padding-lg: 15px;
+        $item-height-lg: 530px;
         @include xs { padding: $item-padding-sm; }
         @include sm { padding: $item-padding-sm; }
         @include md { padding: $item-padding-sm; }
@@ -93,7 +98,6 @@ $lg_end: 1200px;
         .product-image {
             position: relative;
             background-position: center;
-            // background-size: contain;
 
             @include xs {
                 @include square_ratio();
@@ -101,9 +105,9 @@ $lg_end: 1200px;
             @include sm {
                 @include square_ratio();
             }
-            @include md { height: 530px; }
-            @include lg { height: 530px; }
-            @include xl { height: 530px; }
+            @include md { height: $item-height-lg; }
+            @include lg { height: $item-height-lg; }
+            @include xl { height: $item-height-lg; }
 
             &.secondary {
                 position: absolute;
@@ -113,11 +117,11 @@ $lg_end: 1200px;
                 &:hover {
                     opacity: 1;
                 }
-                @include xs { width: calc(100% - 24px); }
-                @include sm { width: calc(100% - 24px); }
-                @include md { width: calc(100% - 30px); }
-                @include lg { width: calc(100% - 30px); }
-                @include xl { width: calc(100% - 30px); }
+                @include xs { @include full_width_minus_padding($item-padding-sm); }
+                @include sm { @include full_width_minus_padding($item-padding-sm); }
+                @include md { @include full_width_minus_padding($item-padding-lg); }
+                @include lg { @include full_width_minus_padding($item-padding-lg); }
+                @include xl { @include full_width_minus_padding($item-padding-lg); }
             }
         }
 
