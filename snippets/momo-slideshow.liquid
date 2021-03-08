@@ -1,0 +1,23 @@
+<div class="image-with-text-section__image">
+    <div class="image-with-text-section__image-image">
+      <div class="slideshow dots-over auto-play {% unless show_mobile_arrows %}slideshow--no-mobile-arrows{% endunless %}" data-transition="{{ slide_mode }}">
+        {% for block in blocks %}
+        <div class="slide" {{ block.shopify_attributes }}>
+            {% if button_link != blank %}
+                <a href="{{ button_link }}">
+            {% endif %}
+
+            {%- if block.settings.image -%}
+              {%- include 'responsive-image', image: block.settings.image, manual_image_load: true -%}
+            {%- else -%}
+              <div class="placeholder-wrapper">{{ 'image' | placeholder_svg_tag: "placeholder dark" }}</div>
+            {%- endif -%}
+
+            {% if button_link != blank %}
+                </a>
+            {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
