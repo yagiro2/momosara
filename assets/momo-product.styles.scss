@@ -1,2 +1,24 @@
 .momo.product {
+    .breadcrumbs {
+        visibility: visible;
+    }
+
+    .product-main-detail {
+        padding-bottom: 0;
+    }
+
+    .product-description {
+        margin-bottom: 30px;
+        > p {
+            margin: 0;
+            &:not(:first-child) {
+                margin-top: 12px;
+            }
+        }
+    }
+
+    .product-price {
+        margin-bottom: 30px;
+    }
+
 }

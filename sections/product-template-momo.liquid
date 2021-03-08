@@ -1,6 +1,6 @@
 {%- assign variant = product.selected_or_first_available_variant -%}
 {%- assign featured_image = product.selected_or_first_available_variant.featured_media.preview_image | default:product.featured_media.preview_image -%}
-<div class="product {% unless variant.available %}variant-status--unavailable{% endunless %} {% if variant.available and variant.inventory_management == 'shopify' and variant.inventory_quantity < 1 %}variant-status--backorder{% endif %}" data-section-type="product-template">
+<div class="momo product {% unless variant.available %}variant-status--unavailable{% endunless %} {% if variant.available and variant.inventory_management == 'shopify' and variant.inventory_quantity < 1 %}variant-status--backorder{% endif %}" data-section-type="product-template">
   <div class="breadcrumbs breadcrumbs--with-opposing-content">
     <nav class="breadcrumbs__nav" role="navigation" aria-label="breadcrumbs">
       <a class="breadcrumbs__crumb" href="{{ routes.root_url }}">{{ 'general.breadcrumbs.home' | t }}</a>
@@ -122,12 +122,6 @@
               <h1 class="product-title h2">{{ product.title }}</h1>
 
               <div>
-                <div class="product-price product-price--large">
-                  <span class="product-price__amount theme-money">{{ variant.price | money }}</span>
-                  {% if variant.compare_at_price > variant.price %}
-                  <span class="product-price__compare theme-money">{{ variant.compare_at_price | money }}</span>
-                  {% endif %}
-                </div>
 
                 {%- if section.settings.show_tax_and_shipping -%}
                   {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
@@ -172,6 +166,13 @@
               {% if section.settings.prod_show_sku %}
               <div class="sku"><span class="label label--inline">{{ 'products.product.sku' | t }}</span> <span class="sku__value">{{ variant.sku }}</span></div>
               {% endif %}
+
+              <div class="product-price product-price--large">
+                <span class="product-price__amount theme-money">{{ variant.price | money }}</span>
+                {% if variant.compare_at_price > variant.price %}
+                <span class="product-price__compare theme-money">{{ variant.compare_at_price | money }}</span>
+                {% endif %}
+              </div>
 
               <div class="option-selectors">
                 {% if product.variants.size > 1 %}
