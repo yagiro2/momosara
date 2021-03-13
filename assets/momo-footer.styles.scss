@@ -10,21 +10,30 @@
     }
 }
 
+@mixin xl() {
+    @media screen and (min-width: 1301px) {
+        @content;
+    }
+}
+
 .momo.pagefooter {
     display: flex;
-    // @ media screen and (max-width: 500px) {
+    .shop-menu, .info-menu {
+        display: none;
+    }
+    @include xl {
+        .shop-menu, .info-menu {
+            display: block;
+        }
+    }
     @include sm {
         /** mobile */
         flex-direction: column;
         padding: 20px 30px;
-        .shop-menu, .info-menu {
-            display: none;
-        }
         > :not(:first-child) {
             margin: 20px 0 0 0;
         }
     }
-    // @ media screen and (min-width: 501px) {
     @include lg {
         /** tablet/desktop */
         flex-direction: row;
@@ -45,9 +54,11 @@
 
     .footer-columns {
         padding: 0;
+        justify-content: space-evenly;
         nav {
             padding: 0;
-            @include lg {
+            flex: 0 0 17%;
+            @include xl {
                 &:not(:first-child) {
                     margin-left: 30px;
                 }
@@ -57,6 +68,7 @@
 
     .footer-nav-links {
         > li {
+            white-space: nowrap;
             @include sm {
                 text-align: center;
             }
@@ -120,5 +132,30 @@
         font-family: Futura, sans-serif;
         white-space: nowrap;
         margin: 0 0 10px 0;
+    }
+
+    .footer-info-section {
+        display: flex;
+        flex-direction: column;
+        @include sm {
+            align-items: center;
+            .content {
+                text-align: center;
+            }
+        }
+        @include lg {
+            margin-top: 7px;
+        }
+        h6 {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        &:not(:first-child) {
+            margin-top: 40px;
+        }
+
+        .small-note {
+            font-size: 15px;
+        }
     }
 }
