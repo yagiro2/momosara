@@ -1,0 +1,39 @@
+<!-- style is at momo-product.styles.scss -->
+
+<div class="momo shipping-info">
+    <div class="toggle-bar">
+        <div class="icon">+</div>
+        <div>Shipping Info</div>
+    </div>
+    <div class="content" style="display: none;">
+        <ul>
+            <li><u>Self-collect</u> from my studio at Jaffa Road 7, Tel Aviv</li>
+            <li><u>Delivery</u> arrives to your address within 1-4 business days from moment of shippment</li>
+            <li><u>Free shipping</u> for orders over 390 Nis</li>
+            <li><u>Shipping cost</u> for orders under 390 Nis - 25 Nis</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function init() {
+        const si = window.shippingInfo = {};
+        
+        const getElem = selector => $(`.momo.shipping-info ${ selector }`);
+
+        const elems = si.elems = {
+            $root: getElem(''),
+            $toggleBar: getElem('.toggle-bar'),
+            $content: getElem('.content'),
+        };
+
+        si.toggleContent = () => {
+            elems.$root.toggleClass('open');
+            elems.$content.slideToggle();
+        }
+
+        elems.$toggleBar.click(shippingInfo.toggleContent);
+    });
+
+</script>

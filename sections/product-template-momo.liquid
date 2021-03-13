@@ -215,6 +215,9 @@
                 <div class="quantity-area">
                   <label for="quantity">{{ 'products.product.quantity' | t }}</label> <input class="quantity select-on-focus" id="quantity" name="quantity" value="1" />
                 </div>
+
+                {% include 'shipping-info-momo' %}
+
                 <div class="product-add">
                   <button class="button {% if section.settings.enable_payment_button %}button--alt{% endif %}" name="add" id="add" type="submit">{{ 'products.product.add_to_cart' | t }}</button>
                   {% if section.settings.enable_payment_button %}

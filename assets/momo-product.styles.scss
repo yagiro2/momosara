@@ -21,4 +21,43 @@
         margin-bottom: 30px;
     }
 
+    .product-form .quantity-area {
+        margin-bottom: 30px;
+    }
+}
+
+.momo.shipping-info {
+    .toggle-bar {
+        display: flex;
+        padding: 5px 10px;
+        border-bottom: 1px solid grey;
+        cursor: pointer;
+        :not(:first-child) {
+            margin-left: 10px;
+        }
+        .icon {
+            /** there is more css below (when open) */
+            transition: transform 300ms ease-in-out;
+            margin-top: -2px;
+        }
+    }
+
+    .content {
+        font-size: 16px;
+        padding: 5px 10px;
+        :not(:first-child) {
+            margin-top: 5px;
+        }
+
+        ul {
+            padding-inline-start: 20px;
+            margin-block: 5px;
+        }
+    }
+
+    &.open {
+        .toggle-bar .icon {
+            transform: rotate(90deg);
+        }
+    }
 }
