@@ -1,4 +1,70 @@
-.momo#pagefooter {
+@mixin sm() {
+    @media screen and (max-width: 500px) {
+        @content;
+    }
+}
+
+@mixin lg() {
+    @media screen and (min-width: 501px) {
+        @content;
+    }
+}
+
+.momo.pagefooter {
+    display: flex;
+    // @ media screen and (max-width: 500px) {
+    @include sm {
+        /** mobile */
+        flex-direction: column;
+        padding: 20px 30px;
+        .shop-menu, .info-menu {
+            display: none;
+        }
+        > :not(:first-child) {
+            margin: 20px 0 0 0;
+        }
+    }
+    // @ media screen and (min-width: 501px) {
+    @include lg {
+        /** tablet/desktop */
+        flex-direction: row;
+        padding: 30px 50px;
+        justify-content: space-around;
+        > :not(:first-child) {
+            margin: 0 0 0 90px;
+        }
+    }
+
+
+    .momo.lists.container {
+        width: unset;
+        @include lg {
+            flex-grow: 1;
+        }
+    }
+
+    .footer-columns {
+        padding: 0;
+        nav {
+            padding: 0;
+            @include lg {
+                &:not(:first-child) {
+                    margin-left: 30px;
+                }
+            }
+        }
+    }
+
+    .footer-nav-links {
+        > li {
+            @include sm {
+                text-align: center;
+            }
+            @include lg {
+                text-align: left;
+            }
+        }
+    }
 
     .momo.signup-icon {
         display: none;
@@ -6,13 +72,53 @@
 
     .momo.signup-section {
         border-bottom: none;
+        padding: 0;
+
+        > .container {
+            margin: 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            @include sm {
+                align-items: stretch;
+                input {
+                    padding: 10px 10px;
+                }
+            }
+            @include lg {
+                align-items: flex-start;
+                input {
+                    padding: 5px 10px;
+                }
+            }
+            button {
+                font-size: 0.7em;
+                padding: 5px 15px;
+            }
+        }
+
+        .input-and-button-row {
+            margin: 0;
+        }
     }
 
     .momo.newsletter_text {
         font-size: 1rem;
+        margin: 0 0 14px 0;
+        min-width: 240px;
+        @include sm {
+            text-align: center;
+        }
+        @include lg {
+            text-align: left;
+        }
     }
 
-    h3 {
-        font-family: Futura,sans-serif;
+    h4 {
+        font-family: Futura, sans-serif;
+        white-space: nowrap;
+        margin: 0 0 10px 0;
     }
 }
