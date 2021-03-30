@@ -18,3 +18,17 @@ $menu-breakpoint: 620px; // duplicated in momo-main-menu.styles.scss. needs to b
         }
     }    
 }
+
+#main-menu.momo.sidemenu {
+    background-color: #ffc4f1;
+    color: #4a4242;
+
+    .main-menu-breadcrumbs, .main-menu-links {
+        text-transform: uppercase;
+    }
+
+    // #main-menu-panel .main-menu-links { // top level links (shop, about, info)
+    //   this selector is saved for future use (currently redundant)
+    // }
+
+}
