@@ -63,6 +63,16 @@
                     margin-left: 30px;
                 }
             }
+
+            @include sm {
+                /** on mobile show 3rd (social) menu as a row */
+                &:nth-child(3) > ul {
+                    display: flex;
+                    li:not(:first-child) {
+                        margin-left: 20px;
+                    }
+                }
+            }
         }
     }
 
@@ -138,6 +148,7 @@
         display: flex;
         flex-direction: column;
         @include sm {
+            display: none; /** hide contant/location on mobile */
             align-items: center;
             .content {
                 text-align: center;
