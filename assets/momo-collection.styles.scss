@@ -4,6 +4,10 @@ $md_end: 1024px;
 $lg_end: 1200px;
 // xl > 1200 px
 
+$item-padding-sm: 12px;
+$item-padding-lg: 15px;
+$item-height-lg: 530px;
+
 @function add_1px($val) {
     @return calc(#{$val} + 1px);
 }
@@ -44,12 +48,17 @@ $lg_end: 1200px;
     > .container {
         max-width: unset;
         width: unset;
-        padding: 0 1vw;
+        @include xs { margin: 0 $item-padding-sm; }
+        @include sm { margin: 0 $item-padding-sm; }
+        @include md { margin: 0 $item-padding-sm; }
+        @include lg { margin: 0 $item-padding-lg; }
+        @include xl { margin: 0 $item-padding-lg; }
     }
 
     #main {
         display: flex;
         flex-direction: column;
+        padding: 0;
     }
 
     .product-list {
@@ -86,9 +95,6 @@ $lg_end: 1200px;
         width: 100%;
         position: relative; /** for .prod-caption */
 
-        $item-padding-sm: 12px;
-        $item-padding-lg: 15px;
-        $item-height-lg: 530px;
         @include xs { padding: $item-padding-sm; }
         @include sm { padding: $item-padding-sm; }
         @include md { padding: $item-padding-sm; }
