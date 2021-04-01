@@ -1,40 +1,73 @@
-@mixin sm() {
-    @media screen and (max-width: 500px) {
-        @content;
+$xs_end: 480px; 
+$sm_end: 768px; 
+$md_end: 1024px; 
+$lg_end: 1200px;
+// xl > 1200 px
+
+@function add_1px($val) {
+    @return calc(#{$val} + 1px);
+}
+
+@mixin bp_range($go_up, $go_down, $min_width, $max_width) {
+    @if $go_up {
+        @media screen and ( min-width: add_1px($min_width) ) {
+            @content;
+        }
+    }
+    @else if $go_down {
+        @media screen and (max-width: $max_width) {
+            @content;
+        }
+    }
+    @else {
+        @media screen and ( min-width: add_1px($min_width) ) and (max-width: $max_width) {
+            @content;
+        }
     }
 }
 
-@mixin lg() {
-    @media screen and (min-width: 501px) {
-        @content;
-    }
+@mixin xs {
+    @media screen and (max-width: $xs_end) { @content; }
 }
 
-@mixin xl() {
-    @media screen and (min-width: 1301px) {
-        @content;
-    }
+@mixin sm($go_up: false, $go_down: false) {
+    @include bp_range($go_up, $go_down, $xs_end, $sm_end) { @content; }
+}
+
+@mixin md($go_up: false, $go_down: false) {
+    @include bp_range($go_up, $go_down, $sm_end, $md_end) { @content; }
+}
+
+
+@mixin lg($go_up: false, $go_down: false) {
+    @include bp_range($go_up, $go_down, $md_end, $lg_end) { @content; }
+}
+
+@mixin xl {
+    @media screen and (min-width: add_1px($lg_end)) { @content; }
 }
 
 .momo.pagefooter {
+    // border: none; /** remove top-border */
     display: flex;
     .shop-menu, .info-menu {
         display: none;
     }
-    @include xl {
+    @include lg($go_up: true) {
         .shop-menu, .info-menu {
             display: block;
         }
     }
-    @include sm {
+    @include sm($go_down: true) {
         /** mobile */
         flex-direction: column;
+        align-items: center;
         padding: 20px 30px;
         > :not(:first-child) {
             margin: 20px 0 0 0;
         }
     }
-    @include lg {
+    @include md($go_up: true) {
         /** tablet/desktop */
         flex-direction: row;
         padding: 30px 50px;
@@ -44,10 +77,10 @@
         }
     }
 
-
     .momo.lists.container {
         width: unset;
-        @include lg {
+        max-width: 600px;
+        @include md($go_up: true) {
             flex-grow: 1;
         }
     }
@@ -58,13 +91,13 @@
         nav {
             padding: 0;
             flex: 0 0 17%;
-            @include xl {
+            @include lg($go_up: true) {
                 &:not(:first-child) {
                     margin-left: 30px;
                 }
             }
 
-            @include sm {
+            @include xs {
                 /** on mobile show 3rd (social) menu as a row */
                 &:nth-child(3) > ul {
                     display: flex;
@@ -79,10 +112,10 @@
     .footer-nav-links {
         > li {
             white-space: nowrap;
-            @include sm {
+            @include xs {
                 text-align: center;
             }
-            @include lg {
+            @include sm {
                 text-align: left;
             }
         }
@@ -95,6 +128,7 @@
     .momo.signup-section {
         border-bottom: none;
         padding: 0;
+        max-width: 350px;
 
         > .container {
             margin: 0;
@@ -103,13 +137,13 @@
         form {
             display: flex;
             flex-direction: column;
-            @include sm {
+            @include sm($go_down: true) {
                 align-items: stretch;
                 input {
                     padding: 10px 10px;
                 }
             }
-            @include lg {
+            @include md {
                 align-items: flex-start;
                 input {
                     padding: 5px 10px;
@@ -129,11 +163,12 @@
     .momo.newsletter_text {
         font-size: 1rem;
         margin: 0 0 14px 0;
-        min-width: 240px;
-        @include sm {
+        white-space: nowrap;
+
+        @include sm($go_down: true) {
             text-align: center;
         }
-        @include lg {
+        @include md {
             text-align: left;
         }
     }
@@ -147,15 +182,15 @@
     .footer-info-section {
         display: flex;
         flex-direction: column;
-        @include sm {
+        @include sm($go_down: true) {
             display: none; /** hide contant/location on mobile */
             align-items: center;
             .content {
                 text-align: center;
             }
         }
-        @include lg {
-            margin-top: 7px;
+        @include md($go_up: true) {
+            margin-top: 5px;
         }
         h6 {
             margin-bottom: 10px;
